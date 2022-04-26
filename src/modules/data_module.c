@@ -93,7 +93,7 @@ static int head_ui_buf;
 static int head_accel_buf;
 static int head_bat_buf;
 
-#define DATA_ACTIVE_ONE_HOUR_SEC	(5*60)//(60 * 60)
+#define DATA_ACTIVE_ONE_HOUR_SEC	(60 * 60)
 
 /* Default device configuration. */
 static struct cloud_data_cfg current_cfg = {
