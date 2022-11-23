@@ -92,7 +92,7 @@ jobs:
       - name: Configure the AWS IoT broker hostname
         working-directory: firmware
         run: |
-          BROKER_HOSTNAME=`cat broker.conf`
+          BROKER_HOSTNAME=`cat ../broker.conf`
           echo "CONFIG_AWS_IOT_BROKER_HOST_NAME=\"${BROKER_HOSTNAME}\"" >> firmware.conf
 
       - name: Configure Memfault
