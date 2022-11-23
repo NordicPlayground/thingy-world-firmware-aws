@@ -89,7 +89,6 @@ jobs:
           name: broker
 
       - name: Configure the AWS IoT broker hostname
-        if: false
         run: |
           BROKER_HOSTNAME=`cat broker.conf`
           echo "CONFIG_AWS_IOT_BROKER_HOST_NAME=\"${BROKER_HOSTNAME}\"" >> firmware/firmware.conf
@@ -108,11 +107,11 @@ jobs:
       - run: cat firmware/firmware.conf
 
       - name: Pull Docker image
-        run: docker pull nordicplayground/nrfconnect-sdk:v2.0-branch
+        run: docker pull nordicplayground/nrfconnect-sdk:v1.9-branch
 
       - name: Build
         run: |
-          docker run --rm -v ${PWD}:/workdir/project nordicplayground/nrfconnect-sdk:v2.0-branch /bin/bash -c 'cd firmware && west init -l && west update --narrow -o=--depth=1 && west build -p always -b ${{ matrix.board }} -- -DOVERLAY_CONFIG="firmware.conf" -DEXTRA_CFLAGS="-Werror"'
+          docker run --rm -v ${PWD}:/workdir/project nordicplayground/nrfconnect-sdk:v1.9-branch /bin/bash -c 'cd firmware && west init -l && west update --narrow -o=--depth=1 && west build -p always -b ${{ matrix.board }} -- -DOVERLAY_CONFIG="firmware.conf;overlay-aws.conf" -DEXTRA_CFLAGS="-Werror"'
 
       - name: Upload symbols file to Memfault
         run: |
