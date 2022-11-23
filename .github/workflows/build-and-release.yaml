@@ -71,8 +71,7 @@ jobs:
 
     strategy:
       matrix:
-        # board: [thingy91_nrf9160_ns, nrf9160dk_nrf9160_ns]
-        board: [thingy91_nrf9160_ns]
+        board: [thingy91_nrf9160_ns, nrf9160dk_nrf9160_ns]
 
     steps:
       - uses: actions/checkout@v3
