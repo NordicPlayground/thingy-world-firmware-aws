@@ -116,7 +116,7 @@ jobs:
               -b ${{ matrix.board }} \
               --build-dir /workdir/project/build \
               -- \
-                -DOVERLAY_CONFIG="overlay-aws.conf;/workdir/project/firmware.conf" \
+                -DOVERLAY_CONFIG="overlay-aws.conf;overlay-debug.conf;/workdir/project/thingy_world.conf;/workdir/project/firmware.conf" \
                 -DEXTRA_CFLAGS="-Werror"
 
       - name: Upload symbols file to Memfault
