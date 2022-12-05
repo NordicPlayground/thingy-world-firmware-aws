@@ -91,7 +91,6 @@ jobs:
 
       - name: Configure Memfault
         working-directory: firmware
-        if: secrets.MEMFAULT_PROJECT_KEY != ''
         run: |
           echo "CONFIG_NRF_MODEM_LIB_TRACE_ENABLED=y" >> firmware.conf
           echo "CONFIG_DEBUG_MODULE_MEMFAULT_USE_EXTERNAL_TRANSPORT=y" >> firmware.conf
