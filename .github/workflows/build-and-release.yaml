@@ -7,6 +7,10 @@ on:
       - "!package.json"
       - "!package-lock.json"
 
+env:
+  BROKER_HOSTNAME: iot.thingy.rocks
+  MEMFAULT_PROJECT_KEY: m8U6bBczNz1N8Xi3M8kAKjAMKu9833YA
+
 jobs:
   # This generates a string containing the current date which is used in
   # in artifact names to simplify locating and distinguishing them once they have
@@ -20,23 +24,6 @@ jobs:
       - name: Generate date string
         id: dateAsString
         run: echo "dateAsString=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
-
-  broker:
-    name: Determine broker hostname
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Determine the AWS IoT broker hostname
-        id: broker-hostname
-        run: |
-          BROKER_HOSTNAME=`AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} AWS_DEFAULT_REGION=${{ secrets.AWS_REGION }} aws iot describe-endpoint --endpoint-type iot:Data-ATS | jq '.endpointAddress' -r | tr -d '\n'`
-          echo ${BROKER_HOSTNAME}
-          if [ -z "$BROKER_HOSTNAME" ]; then echo "Failed to discover broker hostname."; exit 1; fi
-          echo ${BROKER_HOSTNAME} > broker.conf
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: broker
-          path: broker.conf
 
   release-version:
     name: Determine next release version
@@ -61,7 +48,7 @@ jobs:
   build:
     runs-on: ubuntu-22.04
 
-    needs: [broker, release-version, date-string]
+    needs: [release-version, date-string]
 
     strategy:
       matrix:
@@ -79,15 +66,10 @@ jobs:
           echo "CONFIG_ASSET_TRACKER_V2_APP_VERSION=\"${APP_VERSION}\"" >> firmware.conf
           echo "APP_VERSION=${APP_VERSION}" >> $GITHUB_ENV
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: broker
-
       - name: Configure the AWS IoT broker hostname
         working-directory: firmware
         run: |
-          BROKER_HOSTNAME=`cat ../broker.conf`
-          echo "CONFIG_AWS_IOT_BROKER_HOST_NAME=\"${BROKER_HOSTNAME}\"" >> firmware.conf
+          echo "CONFIG_AWS_IOT_BROKER_HOST_NAME=\"${{ env.BROKER_HOSTNAME }}\"" >> firmware.conf
 
       - name: Configure Memfault
         working-directory: firmware
@@ -98,7 +80,7 @@ jobs:
           echo "CONFIG_MEMFAULT_NCS_FW_VERSION_STATIC=y" >> firmware.conf
           echo "CONFIG_MEMFAULT_NCS_FW_VERSION=\"${{ env.APP_VERSION }}\"" >> firmware.conf
           echo "CONFIG_MEMFAULT_NCS_FW_TYPE=\"thingy_world\"" >> firmware.conf
-          echo "CONFIG_MEMFAULT_NCS_PROJECT_KEY=\"${{ secrets.MEMFAULT_PROJECT_KEY }}\"" >> firmware.conf
+          echo "CONFIG_MEMFAULT_NCS_PROJECT_KEY=\"${{ env.MEMFAULT_PROJECT_KEY }}\"" >> firmware.conf
 
       - run: cat firmware.conf
         working-directory: firmware
