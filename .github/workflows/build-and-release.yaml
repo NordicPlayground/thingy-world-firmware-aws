@@ -53,6 +53,7 @@ jobs:
     strategy:
       matrix:
         board: [thingy91_nrf9160_ns, nrf9160dk_nrf9160_ns]
+        configuration: [low-power, debug]
 
     steps:
       - uses: actions/checkout@v3
@@ -62,7 +63,7 @@ jobs:
       - name: Configure Version
         working-directory: firmware
         run: |
-          APP_VERSION=${{ needs.release-version.outputs.nextRelease }}-${{ matrix.board }}
+          APP_VERSION=${{ needs.release-version.outputs.nextRelease }}-${{ matrix.board }}-${{ matrix.configuration }}
           echo "CONFIG_ASSET_TRACKER_V2_APP_VERSION=\"${APP_VERSION}\"" >> firmware.conf
           echo "APP_VERSION=${APP_VERSION}" >> $GITHUB_ENV
 
@@ -85,6 +86,14 @@ jobs:
       - run: cat firmware.conf
         working-directory: firmware
 
+      - name: enable low-power overlay
+        if: contains(matrix.configuration, 'low-power')
+        run: echo "EXTRA_OVERLAY=overlay-low-power.conf" >> $GITHUB_ENV
+
+      - name: enable debug overlay
+        if: contains(matrix.configuration, 'debug')
+        run: echo "EXTRA_OVERLAY=overlay-debug.conf" >> $GITHUB_ENV
+
       - name: Build
         working-directory: firmware
         run: |
@@ -97,7 +106,7 @@ jobs:
               -b ${{ matrix.board }} \
               --build-dir /workdir/project/build \
               -- \
-                -DOVERLAY_CONFIG="overlay-pgps.conf;overlay-aws.conf;overlay-debug.conf;/workdir/project/thingy_world.conf;/workdir/project/firmware.conf" \
+                -DOVERLAY_CONFIG="${{ env.EXTRA_OVERLAY }};overlay-pgps.conf;overlay-aws.conf;overlay-memfault.conf;/workdir/project/thingy_world.conf;/workdir/project/firmware.conf" \
                 -DEXTRA_CFLAGS="-Werror"
 
       - name: Upload symbols file to Memfault
@@ -123,7 +132,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.board }}-${{
+          name: ${{ matrix.board }}-${{ matrix.configuration }}-${{
             needs.date-string.outputs.dateAsString }}-${{ github.sha }}
           path: |
             merged.hex
