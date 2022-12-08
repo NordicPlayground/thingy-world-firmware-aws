@@ -52,7 +52,7 @@ jobs:
 
     strategy:
       matrix:
-        board: [thingy91_nrf9160_ns, nrf9160dk_nrf9160_ns]
+        hw: [thingy91, nrf9160dk, thingy91+solar, nrf9160dk+wifi]
         configuration: [low-power, debug]
 
     steps:
@@ -61,10 +61,18 @@ jobs:
           path: firmware
           submodules: recursive
 
+      - name: Build for Thingy:91
+        if: contains(matrix.hw, 'thingy91')
+        run: echo 'board=thingy91_nrf9160_ns' >> $GITHUB_ENV
+
+      - name: Build for 9160DK
+        if: contains(matrix.hw, 'nrf9160dk')
+        run: echo 'board=nrf9160dk_nrf9160_ns' >> $GITHUB_ENV
+
       - name: Configure Version
         working-directory: firmware
         run: |
-          APP_VERSION=${{ needs.release-version.outputs.nextRelease }}-${{ matrix.board }}-${{ matrix.configuration }}
+          APP_VERSION=${{ needs.release-version.outputs.nextRelease }}-${{ env.board }}-${{ matrix.configuration }}
           echo "CONFIG_ASSET_TRACKER_V2_APP_VERSION=\"${APP_VERSION}\"" >> firmware.conf
           echo "APP_VERSION=${APP_VERSION}" >> $GITHUB_ENV
 
@@ -87,13 +95,23 @@ jobs:
       - run: cat firmware.conf
         working-directory: firmware
 
-      - name: enable low-power overlay
-        if: contains(matrix.configuration, 'low-power')
+      - name: enable low-power build
+        if: matrix.configuration == 'low-power'
         run: echo "EXTRA_OVERLAY=overlay-low-power.conf" >> $GITHUB_ENV
 
-      - name: enable debug overlay
-        if: contains(matrix.configuration, 'debug')
+      - name: enable debug build
+        if: matrix.configuration == 'debug'
         run: echo "EXTRA_OVERLAY=overlay-debug.conf" >> $GITHUB_ENV
+
+      - name: enable solar shield support
+        if: contains(matrix.hw, 'solar')
+        run: echo "EXTRA_OVERLAY=${{ env.EXTRA_OVERLAY }};overlay-solar.conf" >> $GITHUB_ENV
+
+      - name: enable WiFi shield support
+        if: contains(matrix.hw, 'wifi')
+        run: |
+          echo "EXTRA_OVERLAY=${{ env.EXTRA_OVERLAY }};overlay-nrf7002ek-wifi-scan-only.conf" >> $GITHUB_ENV
+          echo 'EXTRA_ARGS="-DSHIELD=nrf7002_ek -DDTC_OVERLAY_FILE=nrf9160dk_with_nrf7002ek.overlay"' >> $GITHUB_ENV
 
       - name: Build
         working-directory: firmware
@@ -101,12 +119,13 @@ jobs:
           docker run --rm \
             -v ${PWD}:/workdir/project \
             -w /workdir/project/sdk-nrf/applications/asset_tracker_v2 \
-            nordicplayground/nrfconnect-sdk:main \
+            nordicplayground/nrfconnect-sdk:v2.2-branch \
             west build \
               -p always \
-              -b ${{ matrix.board }} \
+              -b ${{ env.board }} \
               --build-dir /workdir/project/build \
               -- \
+                ${{ env.EXTRA_ARGS }} \
                 -DOVERLAY_CONFIG="${{ env.EXTRA_OVERLAY }};overlay-pgps.conf;overlay-aws.conf;overlay-memfault.conf;/workdir/project/thingy_world.conf;/workdir/project/firmware.conf" \
                 -DEXTRA_CFLAGS="-Werror"
 
@@ -133,7 +152,7 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.board }}-${{ matrix.configuration }}-${{
+          name: ${{ env.board }}-${{ matrix.configuration }}-${{
             needs.date-string.outputs.dateAsString }}-${{ github.sha }}
           path: |
             merged.hex
