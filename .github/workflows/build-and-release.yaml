@@ -118,7 +118,8 @@ jobs:
         run: |
           docker run --rm \
             -v ${PWD}:/workdir/project \
-            -w /workdir/project/sdk-nrf/applications/asset_tracker_v2 \
+            -v ${PWD}/sdk-nrf:/workdir/nrf \
+            -w /workdir/nrf/applications/asset_tracker_v2 \
             nordicplayground/nrfconnect-sdk:v2.2-branch \
             west build \
               -p always \
