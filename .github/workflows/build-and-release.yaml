@@ -97,21 +97,21 @@ jobs:
 
       - name: enable low-power build
         if: matrix.configuration == 'low-power'
-        run: echo "EXTRA_OVERLAY=overlay-low-power.conf" >> $GITHUB_ENV
+        run: echo EXTRA_OVERLAY=overlay-low-power.conf >> $GITHUB_ENV
 
       - name: enable debug build
         if: matrix.configuration == 'debug'
-        run: echo "EXTRA_OVERLAY=overlay-debug.conf" >> $GITHUB_ENV
+        run: echo EXTRA_OVERLAY=overlay-debug.conf >> $GITHUB_ENV
 
       - name: enable solar shield support
         if: contains(matrix.hw, 'solar')
-        run: echo "EXTRA_OVERLAY=${{ env.EXTRA_OVERLAY }};overlay-solar.conf" >> $GITHUB_ENV
+        run: echo SHIELD_OVERLAY=overlay-solar.conf >> $GITHUB_ENV
 
       - name: enable WiFi shield support
         if: contains(matrix.hw, 'wifi')
         run: |
-          echo "EXTRA_OVERLAY=${{ env.EXTRA_OVERLAY }};overlay-nrf7002ek-wifi-scan-only.conf" >> $GITHUB_ENV
-          echo 'EXTRA_ARGS="-DSHIELD=nrf7002_ek -DDTC_OVERLAY_FILE=nrf9160dk_with_nrf7002ek.overlay"' >> $GITHUB_ENV
+          echo SHIELD_OVERLAY=overlay-nrf7002ek-wifi-scan-only.conf >> $GITHUB_ENV
+          echo EXTRA_ARGS="-DSHIELD=nrf7002_ek -DDTC_OVERLAY_FILE=nrf9160dk_with_nrf7002ek.overlay" >> $GITHUB_ENV
 
       - name: Build
         working-directory: firmware
@@ -126,7 +126,7 @@ jobs:
               --build-dir /workdir/project/build \
               -- \
                 ${{ env.EXTRA_ARGS }} \
-                -DOVERLAY_CONFIG="${{ env.EXTRA_OVERLAY }};overlay-pgps.conf;overlay-aws.conf;overlay-memfault.conf;/workdir/project/thingy_world.conf;/workdir/project/firmware.conf" \
+                -DOVERLAY_CONFIG="${{ env.EXTRA_OVERLAY }};overlay-pgps.conf;overlay-aws.conf;overlay-memfault.conf;/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }}" \
                 -DEXTRA_CFLAGS="-Werror"
 
       - name: Upload symbols file to Memfault
