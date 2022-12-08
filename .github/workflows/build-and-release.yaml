@@ -82,6 +82,8 @@ jobs:
           echo "CONFIG_AWS_IOT_BROKER_HOST_NAME=\"${{ env.BROKER_HOSTNAME }}\"" >> firmware.conf
 
       - name: Configure Memfault
+        # WiFi cannot be combined with Memfault because it does not fit in the flash
+        if: ${{ !contains(matrix.hw, 'wifi') }}
         working-directory: firmware
         run: |
           echo "CONFIG_NRF_MODEM_LIB_TRACE_ENABLED=y" >> firmware.conf
@@ -97,11 +99,11 @@ jobs:
 
       - name: enable low-power build
         if: matrix.configuration == 'low-power'
-        run: echo EXTRA_OVERLAY=overlay-low-power.conf >> $GITHUB_ENV
+        run: echo CONFIG_OVERLAY=overlay-low-power.conf >> $GITHUB_ENV
 
       - name: enable debug build
         if: matrix.configuration == 'debug'
-        run: echo EXTRA_OVERLAY=overlay-debug.conf >> $GITHUB_ENV
+        run: echo CONFIG_OVERLAY=overlay-debug.conf >> $GITHUB_ENV
 
       - name: enable solar shield support
         if: contains(matrix.hw, 'solar')
@@ -127,10 +129,12 @@ jobs:
               --build-dir /workdir/project/build \
               -- \
                 ${{ env.EXTRA_ARGS }} \
-                -DOVERLAY_CONFIG="${{ env.EXTRA_OVERLAY }};overlay-pgps.conf;overlay-aws.conf;overlay-memfault.conf;/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }}" \
+                -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};overlay-pgps.conf;overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }}" \
                 -DEXTRA_CFLAGS="-Werror"
 
       - name: Upload symbols file to Memfault
+        # WiFi cannot be combined with Memfault because it does not fit in the flash
+        if: ${{ !contains(matrix.hw, 'wifi') }}
         working-directory: firmware
         run: |
           pip3 install memfault-cli
