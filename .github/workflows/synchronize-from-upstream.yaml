@@ -1,0 +1,43 @@
+name: Synchronize with upstream
+
+on:
+  push:
+    paths:
+      - ".github/workflows/synchronize-from-upstream.yaml"
+  workflow_dispatch:
+
+jobs:
+  synchronize:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Update from upstream
+        run: git submodule update --remote
+
+      - name: Get fork version
+        working-directory: sdk-nrf
+        run: echo "UPSTREAM_REV=`git rev-parse HEAD | tr -d '\n'`" >> $GITHUB_ENV
+
+      - name: Add new files
+        run: git add sdk-nrf
+
+      - name: Check if changes were made
+        run: |
+          if [[ `git status --porcelain` ]]; then
+            echo "HAS_CHANGES=1" >> $GITHUB_ENV
+          else
+            echo "HAS_CHANGES=0" >> $GITHUB_ENV
+          fi
+
+      - name: Commit update
+        if: env.HAS_CHANGES == '1'
+        run: |
+          echo "machine github.com login accesskey password ${GITHUB_TOKEN}" > ~/.netrc
+          git config --global user.email "actions@example.com"
+          git config --global user.name "github-actions[bot]"
+          git add -A
+          git commit -m "fix: update from fork
+          See ${{ env.upstream_repo }}/commit/${{ env.UPSTREAM_REV }}"
+          git pull --rebase
+          git push

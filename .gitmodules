@@ -1,0 +1,4 @@
+[submodule "sdk-nrf"]
+	path = sdk-nrf
+	url = https://github.com/maxd-nordic/sdk-nrf.git
+	branch = atv2-ina3221
