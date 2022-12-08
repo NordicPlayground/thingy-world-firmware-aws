@@ -47,84 +47,144 @@
         {
           "assets": [
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91_nrf9160_ns-low-power-*/merged.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91-debug-*/merged.hex",
               "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for Thingy:91 (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91_nrf9160_ns-debug-*/app_signed.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91-debug-*/app_signed.hex",
               "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}-signed.hex",
               "label": "Pre-build HEX file for Thingy:91 (signed, debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91_nrf9160_ns-debug-*/app_update.bin",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91-debug-*/app_update.bin",
               "name": "thingy_world-Thingy91-app_upgrade-debug-${nextRelease.gitTag}.bin",
               "label": "App upgrade file for Thingy:91 (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91_nrf9160_ns-debug-*/zephyr.elf",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91-debug-*/zephyr.elf",
               "name": "thingy_world-Thingy91-app_upgrade-debug-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 firmware (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk_nrf9160_ns-debug-*/merged.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk-debug-*/merged.hex",
               "name": "thingy_world-nRF9160DK-debug-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for nRF9160 DK (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk_nrf9160_ns-debug-*/app_signed.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk-debug-*/app_signed.hex",
               "name": "thingy_world-nRF9160DK-debug-${nextRelease.gitTag}-signed.hex",
               "label": "Pre-build HEX file for nRF9160 DK (signed, debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk_nrf9160_ns-debug-*/app_update.bin",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk-debug-*/app_update.bin",
               "name": "thingy_world-nRF9160DK-app_upgrade-debug-${nextRelease.gitTag}.bin",
               "label": "App upgrade file for nRF9160 DK (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk_nrf9160_ns-debug-*/zephyr.elf",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk-debug-*/zephyr.elf",
               "name": "thingy_world-nRF9160DK-app_upgrade-debug-${nextRelease.gitTag}.elf",
               "label": "Symbol file for nRF9160 DK firmware (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91_nrf9160_ns-low-power-*/merged.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91-low-power-*/merged.hex",
               "name": "thingy_world-Thingy91-low-power-${nextRelease.gitTag}.hex",
-              "label": "Pre-build HEX file for Thingy:91"
+              "label": "Pre-build HEX file for Thingy:91 (low power)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91_nrf9160_ns-low-power-*/app_signed.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91-low-power-*/app_signed.hex",
               "name": "thingy_world-Thingy91-low-power-${nextRelease.gitTag}-signed.hex",
-              "label": "Pre-build HEX file for Thingy:91 (signed)"
+              "label": "Pre-build HEX file for Thingy:91 (low power, signed)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91_nrf9160_ns-low-power-*/app_update.bin",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91-low-power-*/app_update.bin",
               "name": "thingy_world-Thingy91-app_upgrade-low-power-${nextRelease.gitTag}.bin",
-              "label": "App upgrade file for Thingy:91"
+              "label": "App upgrade file for Thingy:91 (low power)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91_nrf9160_ns-low-power-*/zephyr.elf",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91-low-power-*/zephyr.elf",
               "name": "thingy_world-Thingy91-app_upgrade-low-power-${nextRelease.gitTag}.elf",
-              "label": "Symbol file for Thingy:91 firmware"
+              "label": "Symbol file for Thingy:91 firmware (low power)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk_nrf9160_ns-low-power-*/merged.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk-low-power-*/merged.hex",
               "name": "thingy_world-nRF9160DK-low-power-${nextRelease.gitTag}.hex",
-              "label": "Pre-build HEX file for nRF9160 DK"
+              "label": "Pre-build HEX file for nRF9160 DK (low power)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk_nrf9160_ns-low-power-*/app_signed.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk-low-power-*/app_signed.hex",
               "name": "thingy_world-nRF9160DK-low-power-${nextRelease.gitTag}-signed.hex",
-              "label": "Pre-build HEX file for nRF9160 DK (signed)"
+              "label": "Pre-build HEX file for nRF9160 DK (low power, signed)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk_nrf9160_ns-low-power-*/app_update.bin",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk-low-power-*/app_update.bin",
               "name": "thingy_world-nRF9160DK-app_upgrade-low-power-${nextRelease.gitTag}.bin",
-              "label": "App upgrade file for nRF9160 DK"
+              "label": "App upgrade file for nRF9160 DK (low power)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk_nrf9160_ns-low-power-*/zephyr.elf",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk-low-power-*/zephyr.elf",
               "name": "thingy_world-nRF9160DK-app_upgrade-low-power-${nextRelease.gitTag}.elf",
-              "label": "Symbol file for nRF9160 DK firmware"
+              "label": "Symbol file for nRF9160 DK firmware (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+solar-low-power-*/merged.hex",
+              "name": "thingy_world-Thingy91-low-power-${nextRelease.gitTag}.hex",
+              "label": "Pre-build HEX file for Thingy:91 with Solar Shield (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+solar-low-power-*/app_signed.hex",
+              "name": "thingy_world-Thingy91-low-power-${nextRelease.gitTag}-signed.hex",
+              "label": "Pre-build HEX file for Thingy:91 with Solar Shield (low power, signed)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+solar-low-power-*/app_update.bin",
+              "name": "thingy_world-Thingy91-app_upgrade-low-power-${nextRelease.gitTag}.bin",
+              "label": "App upgrade file for Thingy:91 with Solar Shield (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+solar-low-power-*/zephyr.elf",
+              "name": "thingy_world-Thingy91-app_upgrade-low-power-${nextRelease.gitTag}.elf",
+              "label": "Symbol file for Thingy:91 with Solar Shield firmware (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+solar-debug-*/merged.hex",
+              "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}.hex",
+              "label": "Pre-build HEX file for Thingy:91 with Solar Shield (debug)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+solar-debug-*/app_signed.hex",
+              "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}-signed.hex",
+              "label": "Pre-build HEX file for Thingy:91 with Solar Shield (signed, debug)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+solar-debug-*/app_update.bin",
+              "name": "thingy_world-Thingy91-app_upgrade-debug-${nextRelease.gitTag}.bin",
+              "label": "App upgrade file for Thingy:91 with Solar Shield (debug)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+solar-debug-*/zephyr.elf",
+              "name": "thingy_world-Thingy91-app_upgrade-debug-${nextRelease.gitTag}.elf",
+              "label": "Symbol file for Thingy:91 with Solar Shield firmware (debug)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+wifi-low-power-*/merged.hex",
+              "name": "thingy_world-nRF9160DK-low-power-${nextRelease.gitTag}.hex",
+              "label": "Pre-build HEX file for nRF9160 DK with WiFi Shield (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+wifi-low-power-*/app_signed.hex",
+              "name": "thingy_world-nRF9160DK-low-power-${nextRelease.gitTag}-signed.hex",
+              "label": "Pre-build HEX file for nRF9160 DK with WiFi Shield (low power, signed)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+wifi-low-power-*/app_update.bin",
+              "name": "thingy_world-nRF9160DK-app_upgrade-low-power-${nextRelease.gitTag}.bin",
+              "label": "App upgrade file for nRF9160 DK with WiFi Shield (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+wifi-low-power-*/zephyr.elf",
+              "name": "thingy_world-nRF9160DK-app_upgrade-low-power-${nextRelease.gitTag}.elf",
+              "label": "Symbol file for nRF9160 DK with WiFi Shield firmware (low power)"
             }
           ]
         }
