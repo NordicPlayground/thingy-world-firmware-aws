@@ -99,7 +99,7 @@ jobs:
         run: |
           docker run --rm \
             -v ${PWD}:/workdir/project \
-            -w /workdir/nrf/applications/asset_tracker_v2 \
+            -w /workdir/project/sdk-nrf/applications/asset_tracker_v2 \
             nordicplayground/nrfconnect-sdk:main \
             west build \
               -p always \
