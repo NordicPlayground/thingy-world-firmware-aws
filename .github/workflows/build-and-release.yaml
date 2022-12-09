@@ -62,9 +62,10 @@ jobs:
           # There is not Solar shield for the nRF9160DK
           - thingy91+low-power+solar+memfault
           - thingy91+debug+solar+memfault
-          # When enabling WiFi, neither debug nor Memfault fit flash
+          # When enabling WiFi, Memfault does not fit flash
           # There is no WiFi shield for the Thingy:91
           - nrf9160dk+low-power+wifi
+          - nrf9160dk+debug+wifi
 
     steps:
       - uses: actions/checkout@v3
@@ -108,11 +109,11 @@ jobs:
         working-directory: firmware
 
       - name: enable low-power build
-        if: matrix.configuration == 'low-power'
+        if: contains(matrix.configuration, 'low-power')
         run: echo CONFIG_OVERLAY=overlay-low-power.conf >> $GITHUB_ENV
 
       - name: enable debug build
-        if: matrix.configuration == 'debug'
+        if: contains(matrix.configuration, 'debug')
         run: echo CONFIG_OVERLAY=overlay-debug.conf >> $GITHUB_ENV
 
       - name: enable solar shield support
@@ -124,6 +125,11 @@ jobs:
         run: |
           echo SHIELD_OVERLAY=overlay-nrf7002ek-wifi-scan-only.conf >> $GITHUB_ENV
           echo EXTRA_ARGS="-DSHIELD=nrf7002_ek -DDTC_OVERLAY_FILE=nrf9160dk_with_nrf7002ek.overlay" >> $GITHUB_ENV
+
+      # WiFi cannot be combined with P-GPS support
+      - name: enable P-GPS
+        if: ${{ !contains(matrix.configuration, 'wifi') }}
+        run: echo PGPS_OVERLAY=overlay-pgps.conf >> $GITHUB_ENV
 
       - name: Build
         working-directory: firmware
@@ -139,8 +145,17 @@ jobs:
               --build-dir /workdir/project/build \
               -- \
                 ${{ env.EXTRA_ARGS }} \
-                -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};overlay-pgps.conf;overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }}" \
+                -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};${{ env.PGPS_OVERLAY }};overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }}" \
                 -DEXTRA_CFLAGS="-Werror"
+
+      - run: cat firmware/firmware.conf
+        if: failure()
+
+      - run: cat firmware/build/zephyr/.config
+        if: failure()
+
+      - run: cat firmware/build/zephyr/zephyr.dts
+        if: failure()
 
       - name: Upload symbols file to Memfault
         if: contains(matrix.configuration, 'memfault')
@@ -162,9 +177,9 @@ jobs:
           cp firmware/build/zephyr/app_signed.hex ./
           cp firmware/build/zephyr/app_update.bin ./
           cp firmware/build/zephyr/zephyr.elf ./
-          cp firmware/firmware.conf ./
 
       - uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: ${{ matrix.configuration }}-${{
             needs.date-string.outputs.dateAsString }}-${{ github.sha }}
