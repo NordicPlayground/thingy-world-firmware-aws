@@ -6,6 +6,7 @@ on:
       - ".github/workflows/build-and-release.yaml"
       - "!package.json"
       - "!package-lock.json"
+      - "thingy_world.conf"
   workflow_dispatch:
 
 env:
