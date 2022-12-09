@@ -108,11 +108,11 @@ jobs:
         working-directory: firmware
 
       - name: enable low-power build
-        if: matrix.configuration == 'low-power'
+        if: contains(matrix.configuration, 'low-power')
         run: echo CONFIG_OVERLAY=overlay-low-power.conf >> $GITHUB_ENV
 
       - name: enable debug build
-        if: matrix.configuration == 'debug'
+        if: contains(matrix.configuration, 'debug')
         run: echo CONFIG_OVERLAY=overlay-debug.conf >> $GITHUB_ENV
 
       - name: enable solar shield support
