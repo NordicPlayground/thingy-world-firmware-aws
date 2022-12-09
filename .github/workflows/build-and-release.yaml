@@ -125,6 +125,11 @@ jobs:
           echo SHIELD_OVERLAY=overlay-nrf7002ek-wifi-scan-only.conf >> $GITHUB_ENV
           echo EXTRA_ARGS="-DSHIELD=nrf7002_ek -DDTC_OVERLAY_FILE=nrf9160dk_with_nrf7002ek.overlay" >> $GITHUB_ENV
 
+      # WiFi cannot be combined with P-GPS support
+      - name: enable P-GPS
+        if: ${{ !contains(matrix.configuration, 'wifi') }}
+        run: echo PGPS_OVERLAY=overlay-pgps.conf >> $GITHUB_ENV
+
       - name: Build
         working-directory: firmware
         run: |
@@ -139,7 +144,7 @@ jobs:
               --build-dir /workdir/project/build \
               -- \
                 ${{ env.EXTRA_ARGS }} \
-                -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};overlay-pgps.conf;overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }}" \
+                -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};${{ env.PGPS_OVERLAY }};overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }}" \
                 -DEXTRA_CFLAGS="-Werror"
 
       - run: cat firmware/firmware.conf

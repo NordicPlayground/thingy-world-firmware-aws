@@ -188,22 +188,22 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+debug+wifi-*/merged.hex",
-              "name": "thingy_world-nRF9160DK-debug-${nextRelease.gitTag}.hex",
+              "name": "thingy_world-nRF9160DK-debug+wifi-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for nRF9160 DK with WiFi Shield (debug)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+debug+wifi-*/app_signed.hex",
-              "name": "thingy_world-nRF9160DK-debug-${nextRelease.gitTag}-signed.hex",
+              "name": "thingy_world-nRF9160DK-debug+wifi-${nextRelease.gitTag}-signed.hex",
               "label": "Pre-build HEX file for nRF9160 DK with WiFi Shield (debug, signed)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+debug+wifi-*/app_update.bin",
-              "name": "thingy_world-nRF9160DK-app_upgrade-debug-${nextRelease.gitTag}.bin",
+              "name": "thingy_world-nRF9160DK-debug+wifi-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for nRF9160 DK with WiFi Shield (debug)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+debug+wifi-*/zephyr.elf",
-              "name": "thingy_world-nRF9160DK-app_upgrade-debug-${nextRelease.gitTag}.elf",
+              "name": "thingy_world-nRF9160DK-debug+wifi-${nextRelease.gitTag}-app_upgrade.elf",
               "label": "Symbol file for nRF9160 DK with WiFi Shield firmware (debug)"
             }
           ]
