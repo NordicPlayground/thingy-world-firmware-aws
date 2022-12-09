@@ -58,12 +58,12 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+debug+memfault-*/app_update.bin",
-              "name": "thingy_world-Thingy91-app_upgrade-debug-${nextRelease.gitTag}.bin",
+              "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for Thingy:91 (debug)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+debug+memfault-*/zephyr.elf",
-              "name": "thingy_world-Thingy91-app_upgrade-debug-${nextRelease.gitTag}.elf",
+              "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 firmware (debug)"
             },
             {
@@ -78,12 +78,12 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+debug+memfault-*/app_update.bin",
-              "name": "thingy_world-nRF9160DK-app_upgrade-debug-${nextRelease.gitTag}.bin",
+              "name": "thingy_world-nRF9160DK-debug-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for nRF9160 DK (debug)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+debug+memfault-*/zephyr.elf",
-              "name": "thingy_world-nRF9160DK-app_upgrade-debug-${nextRelease.gitTag}.elf",
+              "name": "thingy_world-nRF9160DK-debug-${nextRelease.gitTag}.elf",
               "label": "Symbol file for nRF9160 DK firmware (debug)"
             },
             {
@@ -98,12 +98,12 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+low-power+memfault-*/app_update.bin",
-              "name": "thingy_world-Thingy91-app_upgrade-low-power-${nextRelease.gitTag}.bin",
+              "name": "thingy_world-Thingy91-low-power-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for Thingy:91 (low power)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+low-power+memfault-*/zephyr.elf",
-              "name": "thingy_world-Thingy91-app_upgrade-low-power-${nextRelease.gitTag}.elf",
+              "name": "thingy_world-Thingy91-low-power-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 firmware (low power)"
             },
             {
@@ -118,12 +118,12 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+low-power+memfault-*/app_update.bin",
-              "name": "thingy_world-nRF9160DK-app_upgrade-low-power-${nextRelease.gitTag}.bin",
+              "name": "thingy_world-nRF9160DK-low-power-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for nRF9160 DK (low power)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+low-power+memfault-*/zephyr.elf",
-              "name": "thingy_world-nRF9160DK-app_upgrade-low-power-${nextRelease.gitTag}.elf",
+              "name": "thingy_world-nRF9160DK-low-power-${nextRelease.gitTag}.elf",
               "label": "Symbol file for nRF9160 DK firmware (low power)"
             },
             {
@@ -138,12 +138,12 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+low-power+solar+memfault-*/app_update.bin",
-              "name": "thingy_world-Thingy91-app_upgrade-low-power+solar-${nextRelease.gitTag}.bin",
+              "name": "thingy_world-Thingy91-low-power+solar-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for Thingy:91 with Solar Shield (low power)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+low-power+solar+memfault-*/zephyr.elf",
-              "name": "thingy_world-Thingy91-app_upgrade-low-power+solar-${nextRelease.gitTag}.elf",
+              "name": "thingy_world-Thingy91-low-power+solar-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 with Solar Shield firmware (low power)"
             },
             {
@@ -158,12 +158,12 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+debug+solar+memfault-*/app_update.bin",
-              "name": "thingy_world-Thingy91-app_upgrade-debug+solar-${nextRelease.gitTag}.bin",
+              "name": "thingy_world-Thingy91-debug+solar-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for Thingy:91 with Solar Shield (debug)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91+debug+solar+memfault-*/zephyr.elf",
-              "name": "thingy_world-Thingy91-app_upgrade-debug+solar-${nextRelease.gitTag}.elf",
+              "name": "thingy_world-Thingy91-debug+solar-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 with Solar Shield firmware (debug)"
             },
             {
@@ -178,12 +178,12 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+low-power+wifi-*/app_update.bin",
-              "name": "thingy_world-nRF9160DK-app_upgrade-low-power+wifi-${nextRelease.gitTag}.bin",
+              "name": "thingy_world-nRF9160DK-low-power+wifi-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for nRF9160 DK with WiFi Shield (low power)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+low-power+wifi-*/zephyr.elf",
-              "name": "thingy_world-nRF9160DK-app_upgrade-low-power+wifi-${nextRelease.gitTag}.elf",
+              "name": "thingy_world-nRF9160DK-low-power+wifi-${nextRelease.gitTag}.elf",
               "label": "Symbol file for nRF9160 DK with WiFi Shield firmware (low power)"
             }
           ]
