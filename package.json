@@ -203,7 +203,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk+debug+wifi-*/zephyr.elf",
-              "name": "thingy_world-nRF9160DK-debug+wifi-${nextRelease.gitTag}-app_upgrade.elf",
+              "name": "thingy_world-nRF9160DK-debug+wifi-${nextRelease.gitTag}.elf",
               "label": "Symbol file for nRF9160 DK with WiFi Shield firmware (debug)"
             }
           ]
