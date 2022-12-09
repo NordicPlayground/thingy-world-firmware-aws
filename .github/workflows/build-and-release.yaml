@@ -143,13 +143,13 @@ jobs:
                 -DEXTRA_CFLAGS="-Werror"
 
       - run: cat firmware/firmware.conf
-        if: error()
+        if: failure()
 
       - run: firmware/build/zephyr/.config
-        if: error()
+        if: failure()
 
       - run: firmware/build/zephyr/zephyr.dts
-        if: error()
+        if: failure()
 
       - name: Upload symbols file to Memfault
         if: contains(matrix.configuration, 'memfault')
