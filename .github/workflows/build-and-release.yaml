@@ -132,6 +132,7 @@ jobs:
         run: echo PGPS_OVERLAY=overlay-pgps.conf >> $GITHUB_ENV
 
       - name: enable BSEC library to support Bosch BME680 Environmental sensor
+        if: contains(matrix.configuration, 'thingy91')
         working-directory: firmware/sdk-nrf/ext
         run: |
           wget -q ${{ secrets.BSEC_ARCHIVE_URL }} -O bsec.zip
