@@ -131,8 +131,17 @@ jobs:
         if: ${{ !contains(matrix.configuration, 'wifi') }}
         run: echo PGPS_OVERLAY=overlay-pgps.conf >> $GITHUB_ENV
 
+      - name: enable BSEC library to support Bosch BME680 Environmental sensor
+        working-directory: firmware/sdk-nrf/ext
+        run: |
+          wget -q ${{ secrets.BSEC_ARCHIVE_URL }} -O bsec.zip
+          unzip -q bsec.zip
+          ls BSEC_1.4.8.0_Generic_Release_updated_v3
+          echo BSEC_OVERLAY=/workdir/project/overlay-bsec.conf >> $GITHUB_ENV
+
       - name: Build
         working-directory: firmware
+        # -Werror=no-unused-variable below is needed for BSEC to compile
         run: |
           docker run --rm \
             -v ${PWD}:/workdir/project \
@@ -145,8 +154,8 @@ jobs:
               --build-dir /workdir/project/build \
               -- \
                 ${{ env.EXTRA_ARGS }} \
-                -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};${{ env.PGPS_OVERLAY }};overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }}" \
-                -DEXTRA_CFLAGS="-Werror"
+                -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};${{ env.PGPS_OVERLAY }};overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }};${{ env.BSEC_OVERLAY }}" \
+                -DEXTRA_CFLAGS="-Werror -Wno-unused-variable"
 
       - run: cat firmware/firmware.conf
         if: failure()
