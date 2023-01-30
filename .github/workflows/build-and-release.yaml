@@ -109,10 +109,12 @@ jobs:
           echo "CONFIG_MEMFAULT_NCS_PROJECT_KEY=\"${{ env.MEMFAULT_PROJECT_KEY }}\"" >> firmware.conf
 
       - name: Build for NB-IoT only
+        working-directory: firmware
         if: contains(matrix.configuration, 'nbiot')
         run: echo "CONFIG_LTE_NETWORK_MODE_NBIOT_GPS=y" >> firmware.conf
 
       - name: Build for LTE-m and NB-IoT
+        working-directory: firmware
         if: ${{ !contains(matrix.configuration, 'nbiot') }}
         run: echo "CONFIG_LTE_NETWORK_MODE_LTE_M_NBIOT_GPS=y" >> firmware.conf
 
