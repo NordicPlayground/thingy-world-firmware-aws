@@ -198,6 +198,7 @@ jobs:
           cp firmware/build/zephyr/app_signed.hex ./
           cp firmware/build/zephyr/app_update.bin ./
           cp firmware/build/zephyr/zephyr.elf ./
+          cp firmware/build/zephyr/.config ./
 
       - uses: actions/upload-artifact@v3
         if: always()
@@ -210,6 +211,7 @@ jobs:
             app_update.bin
             firmware.conf
             zephyr.elf
+            .config
 
   release:
     name: Release
