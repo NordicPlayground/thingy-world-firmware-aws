@@ -47,7 +47,7 @@ jobs:
 
       - run: echo ${{ steps.version.outputs.nextRelease }}
 
-  build:
+  build-asset_tracker_v2:
     runs-on: ubuntu-22.04
 
     needs: [release-version, date-string]
@@ -215,6 +215,71 @@ jobs:
             zephyr.elf
             .config
 
+  build-mqtt-light-bulb:
+    runs-on: ubuntu-22.04
+
+    needs: [release-version, date-string]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: firmware
+          submodules: recursive
+
+      - name: Configure the AWS IoT broker hostname
+        working-directory: firmware
+        run: |
+          echo "CONFIG_MQTT_SAMPLE_TRANSPORT_BROKER_HOSTNAME=\"${{ env.BROKER_HOSTNAME }}\"" >> firmware.conf
+          echo "CONFIG_MQTT_HELPER_SEC_TAG=42" >> firmware.conf
+
+      - run: cat firmware.conf
+        working-directory: firmware
+
+      - name: Build
+        working-directory: firmware
+        run: |
+          docker run --rm \
+            -v ${PWD}:/workdir/project \
+            -v ${PWD}/mqtt-light-bulb:/workdir/nrf \
+            -w /workdir/nrf/samples/net/mqtt \
+            nordicplayground/nrfconnect-sdk:v2.2-branch \
+            west build \
+              -p always \
+              -b thingy91_nrf9160_ns \
+              --build-dir /workdir/project/build \
+              -- \
+                -DOVERLAY_CONFIG=/workdir/project/thingy_world.conf;/workdir/project/firmware.conf \
+                -DEXTRA_CFLAGS="-Werror"
+
+      - run: cat firmware/firmware.conf
+        if: failure()
+
+      - run: cat firmware/build/zephyr/.config
+        if: failure()
+
+      - run: cat firmware/build/zephyr/zephyr.dts
+        if: failure()
+
+      - name: Copy firmware
+        run: |
+          cp firmware/build/zephyr/merged.hex ./
+          cp firmware/build/zephyr/app_signed.hex ./
+          cp firmware/build/zephyr/app_update.bin ./
+          cp firmware/build/zephyr/zephyr.elf ./
+          cp firmware/build/zephyr/.config ./
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: thingy91.mqtt-light-bulb-${{ needs.date-string.outputs.dateAsString }}-${{ github.sha }}
+          path: |
+            merged.hex
+            app_signed.hex
+            app_update.bin
+            firmware.conf
+            zephyr.elf
+            .config
+
   release:
     name: Release
     runs-on: ubuntu-22.04
@@ -222,7 +287,7 @@ jobs:
       github.event_name == 'workflow_dispatch' || github.event_name ==
       'repository_dispatch')
 
-    needs: [build]
+    needs: [build-asset_tracker_v2, build-mqtt-light-bulb]
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

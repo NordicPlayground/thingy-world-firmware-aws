@@ -15,7 +15,7 @@ jobs:
       - name: Update from upstream
         run: git submodule update --remote
 
-      - name: Get fork version
+      - name: Get forked version
         working-directory: sdk-nrf
         run: echo "UPSTREAM_REV=`git rev-parse HEAD | tr -d '\n'`" >> $GITHUB_ENV
 
