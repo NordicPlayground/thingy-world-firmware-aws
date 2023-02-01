@@ -248,7 +248,7 @@ jobs:
               -b thingy91_nrf9160_ns \
               --build-dir /workdir/project/build \
               -- \
-                -DOVERLAY_CONFIG=/workdir/project/thingy_world.conf;/workdir/project/firmware.conf \
+                -DOVERLAY_CONFIG=/workdir/nrf/samples/net/mqtt/overlay-tls-nrf9160.conf;/workdir/project/firmware.conf" \
                 -DEXTRA_CFLAGS="-Werror"
 
       - run: cat firmware/firmware.conf
