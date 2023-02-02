@@ -242,7 +242,6 @@ jobs:
             -v ${PWD}:/workdir/project \
             -v ${PWD}/mqtt-light-bulb:/workdir/nrf \
             -w /workdir/nrf/samples/net/mqtt \
-        #    nordicplayground/nrfconnect-sdk:v2.2-branch \
             nordicplayground/nrfconnect-sdk:main \
             west build \
               -p always \
