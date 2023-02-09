@@ -8,6 +8,7 @@ on:
       - "!package-lock.json"
       - "thingy_world.conf"
   workflow_dispatch:
+  pull_request:
 
 env:
   BROKER_HOSTNAME: iot.thingy.rocks
