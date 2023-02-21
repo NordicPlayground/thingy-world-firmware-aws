@@ -2,6 +2,8 @@ name: Build and Release
 
 on:
   push:
+    branches:
+      - saga
     paths:
       - ".github/workflows/build-and-release.yaml"
       - "!package.json"
