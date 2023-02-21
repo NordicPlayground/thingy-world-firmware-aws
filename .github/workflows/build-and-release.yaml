@@ -242,14 +242,14 @@ jobs:
           docker run --rm \
             -v ${PWD}:/workdir/project \
             -v ${PWD}/mqtt-light-bulb:/workdir/nrf \
-            -w /workdir/nrf/samples/net/mqtt \
+            -w /workdir/nrf/samples/net/mqtt-lightbulb \
             nordicplayground/nrfconnect-sdk:main \
             west build \
               -p always \
               -b thingy91_nrf9160_ns \
               --build-dir /workdir/project/build \
               -- \
-                -DOVERLAY_CONFIG="/workdir/nrf/samples/net/mqtt/overlay-tls-nrf9160.conf;/workdir/project/light-bulb.conf;/workdir/project/firmware.conf" \
+                -DOVERLAY_CONFIG="/workdir/nrf/samples/net/mqtt-lightbulb/overlay-tls-nrf9160.conf;/workdir/project/light-bulb.conf;/workdir/project/firmware.conf" \
                 -DEXTRA_CFLAGS="-Werror"
 
       - run: cat firmware/firmware.conf
