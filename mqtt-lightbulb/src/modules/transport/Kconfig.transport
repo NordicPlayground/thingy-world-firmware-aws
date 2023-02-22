@@ -1,0 +1,64 @@
+#
+# Copyright (c) 2023 Nordic Semiconductor
+#
+# SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+#
+
+menuconfig MQTT_SAMPLE_TRANSPORT
+	bool "Transport"
+	select MQTT_HELPER
+	select MQTT_CLEAN_SESSION
+	select HW_ID_LIBRARY
+	default y
+
+if MQTT_SAMPLE_TRANSPORT
+
+config MQTT_SAMPLE_TRANSPORT_RECONNECTION_TIMEOUT_SECONDS
+	int "Reconnection timeout in seconds"
+	default 60
+	help
+	  Time in between reconnection attempts to the MQTT broker.
+
+config MQTT_SAMPLE_TRANSPORT_THREAD_STACK_SIZE
+	int "Thread stack size"
+	default 4096
+
+config MQTT_SAMPLE_TRANSPORT_MESSAGE_QUEUE_SIZE
+	int "Message queue size"
+	default 5
+	help
+	  ZBus subscriber message queue size.
+
+config MQTT_SAMPLE_TRANSPORT_BROKER_HOSTNAME
+	string "MQTT broker hostname"
+	default "test.mosquitto.org"
+
+config MQTT_SAMPLE_TRANSPORT_CLIENT_ID
+	string "MQTT Client ID"
+	default ""
+	help
+	  Use a custom Client ID string. If not set, the client ID will be
+	  generated based on IMEI number (for nRF9160 based targets) or
+	  randomly (for other platforms).
+
+config MQTT_SAMPLE_TRANSPORT_PUBLISH_TOPIC
+	string "MQTT publish topic"
+	default "my/%s/publish/topic"
+
+config MQTT_SAMPLE_TRANSPORT_SUBSCRIBE_TOPIC
+	string "MQTT subscribe topic"
+	default "my/%s/subscribe/topic"
+
+config MQTT_SAMPLE_TRANSPORT_LEDCTRL_SUBSCRIBE_TOPIC
+	string "MQTT LED control topic"
+	default "my/%s/ledctrl"
+
+config MQTT_SAMPLE_ALLOW_CREDENTIAL_OVERWRITING
+	bool "Allow overwriting of credentials in modem"
+	default n
+
+endif # MQTT_SAMPLE_TRANSPORT
+
+module = MQTT_SAMPLE_TRANSPORT
+module-str = Transport
+source "subsys/logging/Kconfig.template.log_config"

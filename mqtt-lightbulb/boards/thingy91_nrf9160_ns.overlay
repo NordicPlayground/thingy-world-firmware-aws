@@ -1,0 +1,13 @@
+/*
+ * Copyright (c) 2023 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
+ */
+
+/ {
+	aliases {
+		led-red = &pwm_led0;
+		led-blue = &pwm_led1;
+		led-green = &pwm_led2;
+	};
+};
