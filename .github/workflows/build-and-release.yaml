@@ -246,7 +246,7 @@ jobs:
             -v ${PWD}/mqtt-light-bulb:/workdir/nrf \
             -w /workdir/nrf/samples/net/mqtt-lightbulb \
             nordicplayground/nrfconnect-sdk:main \
-            west build \
+            west update && west build \
               -p always \
               -b thingy91_nrf9160_ns \
               --build-dir /workdir/project/build \
