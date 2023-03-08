@@ -164,7 +164,7 @@ jobs:
             -v ${PWD}:/workdir/project \
             -v ${PWD}/sdk-nrf:/workdir/nrf \
             -w /workdir/nrf/applications/asset_tracker_v2 \
-            nordicplayground/nrfconnect-sdk:v2.2-branch \
+            nordicplayground/nrfconnect-sdk:v2.3-branch \
             west build \
               -p always \
               -b ${{ env.board }} \
@@ -172,7 +172,13 @@ jobs:
               -- \
                 ${{ env.EXTRA_ARGS }} \
                 -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};${{ env.PGPS_OVERLAY }};overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }};${{ env.BSEC_OVERLAY }}" \
-                -DEXTRA_CFLAGS="-Werror -Wno-unused-variable"
+                -DEXTRA_CFLAGS="-Werror -Wno-unused-variable" > build.log 2>&1
+
+      - run: cat build.log
+        working-directory: firmware
+
+      - run: bash check_kconfig_warnings.bash build.log
+        working-directory: firmware
 
       - run: cat firmware/firmware.conf
         if: failure()
@@ -245,14 +251,20 @@ jobs:
             -v ${PWD}:/workdir/project \
             -v ${PWD}/mqtt-light-bulb:/workdir/nrf \
             -w /workdir/nrf/samples/net/mqtt-lightbulb \
-            nordicplayground/nrfconnect-sdk:main \
+            nordicplayground/nrfconnect-sdk:v2.3-branch \
             west build \
               -p always \
               -b thingy91_nrf9160_ns \
               --build-dir /workdir/project/build \
               -- \
                 -DOVERLAY_CONFIG="/workdir/nrf/samples/net/mqtt-lightbulb/overlay-tls-nrf9160.conf;/workdir/project/light-bulb.conf;/workdir/project/firmware.conf" \
-                -DEXTRA_CFLAGS="-Werror"
+                -DEXTRA_CFLAGS="-Werror" > build.log 2>&1
+
+      - run: cat build.log
+        working-directory: firmware
+
+      - run: bash check_kconfig_warnings.bash build.log
+        working-directory: firmware
 
       - run: cat firmware/firmware.conf
         if: failure()
