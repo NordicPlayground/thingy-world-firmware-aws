@@ -47,42 +47,42 @@
         {
           "assets": [
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.memfault-*/merged.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug-*/merged.hex",
               "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for Thingy:91 (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.memfault-*/app_signed.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug-*/app_signed.hex",
               "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}-signed.hex",
               "label": "Pre-build HEX file for Thingy:91 (signed, debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.memfault-*/app_update.bin",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug-*/app_update.bin",
               "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for Thingy:91 (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.memfault-*/zephyr.elf",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug-*/zephyr.elf",
               "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 firmware (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.memfault.nbiot-*/merged.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot-*/merged.hex",
               "name": "thingy_world-Thingy91-debug-nbiot-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for Thingy:91 (debug, NB-IoT only)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.memfault.nbiot-*/app_signed.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot-*/app_signed.hex",
               "name": "thingy_world-Thingy91-debug-nbiot-${nextRelease.gitTag}-signed.hex",
               "label": "Pre-build HEX file for Thingy:91 (signed, debug, NB-IoT only)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.memfault.nbiot-*/app_update.bin",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot-*/app_update.bin",
               "name": "thingy_world-Thingy91-debug-nbiot-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for Thingy:91 (debug, NB-IoT only)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.memfault.nbiot-*/zephyr.elf",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot-*/zephyr.elf",
               "name": "thingy_world-Thingy91-debug-nbiot-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 firmware (debug, NB-IoT only)"
             },
