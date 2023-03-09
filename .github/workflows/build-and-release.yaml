@@ -60,8 +60,11 @@ jobs:
         configuration:
           - thingy91.low-power.memfault
           - nrf9160dk.low-power.memfault
+          # Not enough flash for Memfault AND debug on Thingy:91,
+          # and it's not that useful anyway because debug builds
+          # will most likely be used connected to a PC
           - thingy91.debug
-          - nrf9160dk.debug.memfault
+          - nrf9160dk.debug
           # There is not Solar shield for the nRF9160DK
           - thingy91.low-power.solar.memfault
           - thingy91.debug.solar.memfault
