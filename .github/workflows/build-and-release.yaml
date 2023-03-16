@@ -67,7 +67,7 @@ jobs:
           - nrf9160dk.debug
           # There is not Solar shield for the nRF9160DK
           - thingy91.low-power.solar.memfault
-          - thingy91.debug.solar.memfault
+          - thingy91.debug.solar
           # When enabling WiFi, Memfault does not fit flash
           # There is no WiFi shield for the Thingy:91
           - nrf9160dk.low-power.wifi
