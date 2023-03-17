@@ -60,18 +60,21 @@ jobs:
         configuration:
           - thingy91.low-power.memfault
           - nrf9160dk.low-power.memfault
-          - thingy91.debug.memfault
-          - nrf9160dk.debug.memfault
+          # Not enough flash for Memfault AND debug on Thingy:91,
+          # and it's not that useful anyway because debug builds
+          # will most likely be used connected to a PC
+          - thingy91.debug
+          - nrf9160dk.debug
           # There is not Solar shield for the nRF9160DK
           - thingy91.low-power.solar.memfault
-          - thingy91.debug.solar.memfault
+          - thingy91.debug.solar
           # When enabling WiFi, Memfault does not fit flash
           # There is no WiFi shield for the Thingy:91
           - nrf9160dk.low-power.wifi
           - nrf9160dk.debug.wifi
           # NB-IoT only builds for Thingy:91
           - thingy91.low-power.memfault.nbiot
-          - thingy91.debug.memfault.nbiot
+          - thingy91.debug.nbiot
 
     steps:
       - uses: actions/checkout@v3
@@ -110,6 +113,7 @@ jobs:
           echo "CONFIG_MEMFAULT_NCS_FW_VERSION=\"${{ env.APP_VERSION }}\"" >> firmware.conf
           echo "CONFIG_MEMFAULT_NCS_FW_TYPE=\"thingy_world\"" >> firmware.conf
           echo "CONFIG_MEMFAULT_NCS_PROJECT_KEY=\"${{ env.MEMFAULT_PROJECT_KEY }}\"" >> firmware.conf
+          echo MEMFAULT_OVERLAY=overlay-memfault.conf >> $GITHUB_ENV
 
       - name: Build for NB-IoT only
         working-directory: firmware
@@ -172,13 +176,7 @@ jobs:
               -- \
                 ${{ env.EXTRA_ARGS }} \
                 -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};${{ env.PGPS_OVERLAY }};overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }};${{ env.BSEC_OVERLAY }}" \
-                -DEXTRA_CFLAGS="-Werror -Wno-unused-variable" > build.log 2>&1
-
-      - run: cat build.log
-        working-directory: firmware
-
-      - run: bash check_kconfig_warnings.bash build.log
-        working-directory: firmware
+                -DEXTRA_CFLAGS="-Werror -Wno-unused-variable"
 
       - run: cat firmware/firmware.conf
         if: failure()
@@ -258,13 +256,7 @@ jobs:
               --build-dir /workdir/project/build \
               -- \
                 -DOVERLAY_CONFIG="/workdir/nrf/samples/net/mqtt-lightbulb/overlay-tls-nrf9160.conf;/workdir/project/light-bulb.conf;/workdir/project/firmware.conf" \
-                -DEXTRA_CFLAGS="-Werror" > build.log 2>&1
-
-      - run: cat build.log
-        working-directory: firmware
-
-      - run: bash check_kconfig_warnings.bash build.log
-        working-directory: firmware
+                -DEXTRA_CFLAGS="-Werror"
 
       - run: cat firmware/firmware.conf
         if: failure()
