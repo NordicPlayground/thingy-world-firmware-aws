@@ -75,6 +75,8 @@ jobs:
           # NB-IoT only builds for Thingy:91
           - thingy91.low-power.memfault.nbiot
           - thingy91.debug.nbiot
+          - thingy91.low-power.memfault.nbiot.legacy_pco
+          - thingy91.debug.nbiot.legacy_pco
 
     steps:
       - uses: actions/checkout@v3
@@ -119,6 +121,12 @@ jobs:
         working-directory: firmware
         if: contains(matrix.configuration, 'nbiot')
         run: echo "CONFIG_LTE_NETWORK_MODE_NBIOT_GPS=y" >> firmware.conf
+
+      - name: Build with legacy PCO
+        working-directory: firmware
+        if: contains(matrix.configuration, 'legacy_pco')
+        run: echo "CONFIG_PDN_LEGACY_PCO=y" >> firmware.conf
+
 
       - name: Build for LTE-m and NB-IoT
         working-directory: firmware
