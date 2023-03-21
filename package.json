@@ -87,6 +87,26 @@
               "label": "Symbol file for Thingy:91 firmware (debug, NB-IoT only)"
             },
             {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot.legacy_pco-*/merged.hex",
+              "name": "thingy_world-Thingy91-debug-nbiot-legacy-pco-${nextRelease.gitTag}.hex",
+              "label": "Pre-build HEX file for Thingy:91 (debug, NB-IoT only, legacy PCO)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot.legacy_pco-*/app_signed.hex",
+              "name": "thingy_world-Thingy91-debug-nbiot-legacy-pco${nextRelease.gitTag}-signed.hex",
+              "label": "Pre-build HEX file for Thingy:91 (signed, debug, NB-IoT only, legacy PCO)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot.legacy_pco-*/app_update.bin",
+              "name": "thingy_world-Thingy91-debug-nbiot-legacy-pco${nextRelease.gitTag}-app_upgrade.bin",
+              "label": "App upgrade file for Thingy:91 (debug, NB-IoT only, legacy PCO)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot.legacy_pco-*/zephyr.elf",
+              "name": "thingy_world-Thingy91-debug-nbiot-legacy-pco${nextRelease.gitTag}.elf",
+              "label": "Symbol file for Thingy:91 firmware (debug, NB-IoT only, legacy PCO)"
+            },
+            {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug-*/merged.hex",
               "name": "thingy_world-nRF9160DK-debug-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for nRF9160 DK (debug)"
@@ -130,6 +150,26 @@
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.nbiot-*/zephyr.elf",
               "name": "thingy_world-Thingy91-low-power-nbiot-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 firmware (low power, NB-IoT only)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.nbiot.legacy_pco-*/merged.hex",
+              "name": "thingy_world-Thingy91-low-power-nbiot-legacy-pco-${nextRelease.gitTag}.hex",
+              "label": "Pre-build HEX file for Thingy:91 (low power, NB-IoT only, legacy PCO)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.nbiot.legacy_pco-*/app_signed.hex",
+              "name": "thingy_world-Thingy91-low-power-nbiot-legacy-pco-${nextRelease.gitTag}-signed.hex",
+              "label": "Pre-build HEX file for Thingy:91 (low power, signed, NB-IoT only, legacy PCO)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.nbiot.legacy_pco-*/app_update.bin",
+              "name": "thingy_world-Thingy91-low-power-nbiot-legacy-pco-${nextRelease.gitTag}-app_upgrade.bin",
+              "label": "App upgrade file for Thingy:91 (low power, NB-IoT only, legacy PCO)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.nbiot.legacy_pco-*/zephyr.elf",
+              "name": "thingy_world-Thingy91-low-power-nbiot-legacy-pco-${nextRelease.gitTag}.elf",
+              "label": "Symbol file for Thingy:91 firmware (low power, NB-IoT only, legacy PCO)"
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug-*/app_signed.hex",
