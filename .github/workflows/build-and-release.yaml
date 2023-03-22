@@ -125,7 +125,12 @@ jobs:
       - name: Build with legacy PCO
         working-directory: firmware
         if: contains(matrix.configuration, 'legacy_pco')
-        run: echo "CONFIG_PDN_LEGACY_PCO=y" >> firmware.conf
+        run: |
+          echo "CONFIG_PDN_LEGACY_PCO=y" >> firmware.conf
+          echo "CONFIG_PDN_DEFAULTS_OVERRIDE=y" >> firmware.conf
+          echo "CONFIG_PDN_DEFAULT_AUTH_PAP=y" >> firmware.conf
+          echo 'CONFIG_PDN_DEFAULT_USERNAME="5a1d5c1e-2ce9-424b-8b1d-92999c33fa759ff4dfb1-71ff-4016-8684-00d5931e6b1d"' >> firmware.conf
+          echo 'CONFIG_PDN_DEFAULT_PASSWORD="a9e977c2-9a86-424e-9cc2-a3345f0bff71ce443d28-c88b-4096-93a2-5e24cb31e792"' >> firmware.conf
 
 
       - name: Build for LTE-m and NB-IoT
