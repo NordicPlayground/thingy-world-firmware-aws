@@ -207,22 +207,22 @@
               "label": "Symbol file for Thingy:91 with Solar Shield firmware (low power)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.memfault-*/merged.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar-*/merged.hex",
               "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for Thingy:91 with Solar Shield (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.memfault-*/app_signed.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar-*/app_signed.hex",
               "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}-signed.hex",
               "label": "Pre-build HEX file for Thingy:91 with Solar Shield (signed, debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.memfault-*/app_update.bin",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar-*/app_update.bin",
               "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for Thingy:91 with Solar Shield (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.memfault-*/zephyr.elf",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar-*/zephyr.elf",
               "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 with Solar Shield firmware (debug)"
             },
@@ -247,22 +247,22 @@
               "label": "Symbol file for Thingy:91 with Solar Shield on nRF Cloud firmware (low power)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.memfault.nrfcloud-*/merged.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.nrfcloud-*/merged.hex",
               "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for Thingy:91 with Solar Shield on nRF Cloud (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.memfault.nrfcloud-*/app_signed.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.nrfcloud-*/app_signed.hex",
               "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}-signed.hex",
               "label": "Pre-build HEX file for Thingy:91 with Solar Shield on nRF Cloud (signed, debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.memfault.nrfcloud-*/app_update.bin",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.nrfcloud-*/app_update.bin",
               "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for Thingy:91 with Solar Shield on nRF Cloud (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.memfault.nrfcloud-*/zephyr.elf",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar.nrfcloud-*/zephyr.elf",
               "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}.elf",
               "label": "Symbol file for Thingy:91 with Solar Shield on nRF Cloud firmware (debug)"
             },
@@ -287,22 +287,22 @@
               "label": "Symbol file for nRF9160 DK with Solar Shield on nRF Cloud firmware (low power)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug.solar.memfault.nrfcloud-*/merged.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug.solar.nrfcloud-*/merged.hex",
               "name": "thingy_world-nrf9160dk-debug.solar-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for nRF9160 DK with Solar Shield on nRF Cloud (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug.solar.memfault.nrfcloud-*/app_signed.hex",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug.solar.nrfcloud-*/app_signed.hex",
               "name": "thingy_world-nrf9160dk-debug.solar-${nextRelease.gitTag}-signed.hex",
               "label": "Pre-build HEX file for nRF9160 DK with Solar Shield on nRF Cloud (signed, debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug.solar.memfault.nrfcloud-*/app_update.bin",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug.solar.nrfcloud-*/app_update.bin",
               "name": "thingy_world-nrf9160dk-debug.solar-${nextRelease.gitTag}-app_upgrade.bin",
               "label": "App upgrade file for nRF9160 DK with Solar Shield on nRF Cloud (debug)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug.solar.memfault.nrfcloud-*/zephyr.elf",
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug.solar.nrfcloud-*/zephyr.elf",
               "name": "thingy_world-nrf9160dk-debug.solar-${nextRelease.gitTag}.elf",
               "label": "Symbol file for nRF9160 DK with Solar Shield on nRF Cloud firmware (debug)"
             },
