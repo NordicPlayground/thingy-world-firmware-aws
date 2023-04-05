@@ -8,7 +8,6 @@ on:
       - ".github/workflows/build-and-release.yaml"
       - "!package.json"
       - "!package-lock.json"
-      - "thingy_world.conf"
   workflow_dispatch:
   pull_request:
 
@@ -65,9 +64,14 @@ jobs:
           # will most likely be used connected to a PC
           - thingy91.debug
           - nrf9160dk.debug
-          # There is not Solar shield for the nRF9160DK
+          # Thingy:91 with solar shield using AWS backend
           - thingy91.low-power.solar.memfault
           - thingy91.debug.solar
+          # Thingy:91 and nRF9160DK with solar shield using nRF Cloud backend
+          - thingy91.low-power.solar.memfault.nrfcloud
+          - thingy91.debug.solar.nrfcloud
+          - nrf9160dk.low-power.solar.memfault.nrfcloud
+          - nrf9160dk.debug.solar.nrfcloud
           # When enabling WiFi, Memfault does not fit flash
           # There is no WiFi shield for the Thingy:91
           - nrf9160dk.low-power.wifi
@@ -98,17 +102,20 @@ jobs:
           APP_VERSION=${{ needs.release-version.outputs.nextRelease }}+${{ matrix.configuration }}
           echo "CONFIG_ASSET_TRACKER_V2_APP_VERSION=\"${APP_VERSION}\"" >> firmware.conf
           echo "APP_VERSION=${APP_VERSION}" >> $GITHUB_ENV
+          echo "CONFIG_DATA_DEVICE_MODE_ACTIVE=y" >> firmware.conf
+          echo "CONFIG_LTE_PSM_REQ_RAT=\"00000000\"" >> firmware.conf
 
       - name: Configure the AWS IoT broker hostname
+        if: ${{ !contains(matrix.configuration, 'nrfcloud') }}
         working-directory: firmware
         run: |
           echo "CONFIG_AWS_IOT_BROKER_HOST_NAME=\"${{ env.BROKER_HOSTNAME }}\"" >> firmware.conf
+          echo AWS_OVERLAY=overlay-aws.conf >> $GITHUB_ENV
 
       - name: Configure Memfault
         if: contains(matrix.configuration, 'memfault')
         working-directory: firmware
         run: |
-          echo "CONFIG_NRF_MODEM_LIB_TRACE_ENABLED=y" >> firmware.conf
           echo "CONFIG_DEBUG_MODULE_MEMFAULT_USE_EXTERNAL_TRANSPORT=y" >> firmware.conf
           echo "CONFIG_DEBUG_MODULE_MEMFAULT_HEARTBEAT_INTERVAL_SEC=3600" >> firmware.conf
           echo "CONFIG_MEMFAULT_NCS_FW_VERSION_STATIC=y" >> firmware.conf
@@ -127,14 +134,10 @@ jobs:
         if: contains(matrix.configuration, 'legacy_pco')
         run: echo "CONFIG_PDN_LEGACY_PCO=y" >> firmware.conf
 
-
       - name: Build for LTE-m and NB-IoT
         working-directory: firmware
         if: ${{ !contains(matrix.configuration, 'nbiot') }}
         run: echo "CONFIG_LTE_NETWORK_MODE_LTE_M_NBIOT_GPS=y" >> firmware.conf
-
-      - run: cat firmware.conf
-        working-directory: firmware
 
       - name: enable low-power build
         if: contains(matrix.configuration, 'low-power')
@@ -142,11 +145,15 @@ jobs:
 
       - name: enable debug build
         if: contains(matrix.configuration, 'debug')
-        run: echo CONFIG_OVERLAY=overlay-debug.conf >> $GITHUB_ENV
+        run: |
+          echo CONFIG_OVERLAY=overlay-debug.conf >> $GITHUB_ENV
+          echo "CONFIG_NRF_MODEM_LIB_TRACE=y" >> firmware.conf
 
       - name: enable solar shield support
         if: contains(matrix.configuration, 'solar')
-        run: echo SHIELD_OVERLAY=overlay-solar.conf >> $GITHUB_ENV
+        run: |
+          echo SHIELD_OVERLAY=overlay-solar.conf >> $GITHUB_ENV
+          echo EXTRA_ARGS="-DDTC_OVERLAY_FILE=\"boards/${{ env.board }}.overlay;solar_shield.overlay\"" >> $GITHUB_ENV
 
       - name: enable WiFi shield support
         if: contains(matrix.configuration, 'wifi')
@@ -168,6 +175,9 @@ jobs:
           ls BSEC_1.4.8.0_Generic_Release_updated_v3
           echo BSEC_OVERLAY=/workdir/project/overlay-bsec.conf >> $GITHUB_ENV
 
+      - run: cat firmware.conf
+        working-directory: firmware
+
       - name: Build
         working-directory: firmware
         # -Werror=no-unused-variable below is needed for BSEC to compile
@@ -176,18 +186,15 @@ jobs:
             -v ${PWD}:/workdir/project \
             -v ${PWD}/sdk-nrf:/workdir/nrf \
             -w /workdir/nrf/applications/asset_tracker_v2 \
-            nordicplayground/nrfconnect-sdk:v2.3-branch \
+            nordicplayground/nrfconnect-sdk:main \
             west build \
               -p always \
               -b ${{ env.board }} \
               --build-dir /workdir/project/build \
               -- \
                 ${{ env.EXTRA_ARGS }} \
-                -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};${{ env.PGPS_OVERLAY }};overlay-aws.conf;${{ env.MEMFAULT_OVERLAY }};/workdir/project/thingy_world.conf;/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }};${{ env.BSEC_OVERLAY }}" \
+                -DOVERLAY_CONFIG="${{ env.CONFIG_OVERLAY }};${{ env.PGPS_OVERLAY }};${{ env.AWS_OVERLAY }};${{ env.MEMFAULT_OVERLAY }};/workdir/project/firmware.conf;${{ env.SHIELD_OVERLAY }};${{ env.BSEC_OVERLAY }}" \
                 -DEXTRA_CFLAGS="-Werror -Wno-unused-variable"
-
-      - run: cat firmware/firmware.conf
-        if: failure()
 
       - run: cat firmware/build/zephyr/.config
         if: failure()
