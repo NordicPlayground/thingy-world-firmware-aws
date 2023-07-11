@@ -180,7 +180,7 @@ jobs:
             -v ${PWD}:/workdir/project \
             -v ${PWD}/sdk-nrf:/workdir/nrf \
             -w /workdir/nrf/applications/asset_tracker_v2 \
-            nordicplayground/nrfconnect-sdk:main \
+            nordicplayground/nrfconnect-sdk:v2.4-branch \
             west build \
               -p always \
               -b ${{ env.board }} \
