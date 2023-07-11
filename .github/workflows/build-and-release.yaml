@@ -67,11 +67,6 @@ jobs:
           # Thingy:91 with solar shield using AWS backend
           - thingy91.low-power.solar.memfault
           - thingy91.debug.solar
-          # Thingy:91 and nRF9160DK with solar shield using nRF Cloud backend
-          - thingy91.low-power.solar.memfault.nrfcloud
-          - thingy91.debug.solar.nrfcloud
-          - nrf9160dk.low-power.solar.memfault.nrfcloud
-          - nrf9160dk.debug.solar.nrfcloud
           # When enabling WiFi, Memfault does not fit flash
           # There is no WiFi shield for the Thingy:91
           - nrf9160dk.low-power.wifi
@@ -106,7 +101,6 @@ jobs:
           echo "CONFIG_LTE_PSM_REQ_RAT=\"00000000\"" >> firmware.conf
 
       - name: Configure the AWS IoT broker hostname
-        if: ${{ !contains(matrix.configuration, 'nrfcloud') }}
         working-directory: firmware
         run: |
           echo "CONFIG_AWS_IOT_BROKER_HOST_NAME=\"${{ env.BROKER_HOSTNAME }}\"" >> firmware.conf
