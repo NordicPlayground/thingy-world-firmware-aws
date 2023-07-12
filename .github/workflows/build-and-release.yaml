@@ -147,7 +147,7 @@ jobs:
         if: contains(matrix.configuration, 'solar')
         run: |
           echo SHIELD_OVERLAY=overlay-solar.conf >> $GITHUB_ENV
-          echo EXTRA_ARGS="-DDTC_OVERLAY_FILE=\"boards/${{ env.board }}.overlay;solar_shield.overlay\"" >> $GITHUB_ENV
+          echo EXTRA_ARGS="-DSHIELD=powerfoyle" >> $GITHUB_ENV
 
       - name: enable WiFi shield support
         if: contains(matrix.configuration, 'wifi')
