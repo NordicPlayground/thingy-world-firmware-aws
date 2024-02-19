@@ -17,7 +17,8 @@ jobs:
 
       - name: Get forked version
         working-directory: sdk-nrf
-        run: echo "UPSTREAM_REV=`git rev-parse HEAD | tr -d '\n'`" >> $GITHUB_ENV
+        run:
+          echo "UPSTREAM_REV=`git rev-parse HEAD | tr -d '\n'`" >> $GITHUB_ENV
 
       - name: Add new files
         run: git add sdk-nrf
