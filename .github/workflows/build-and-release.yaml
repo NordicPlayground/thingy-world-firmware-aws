@@ -73,12 +73,15 @@ jobs:
           # When enabling WiFi, Memfault does not fit flash
           # There is no WiFi shield for the Thingy:91
           - nrf9160dk.low-power.wifi
-          - nrf9160dk.debug.wifi
+          # Not enough RAM for debug and wifi, building wifi without debug
+          # - nrf9160dk.debug.wifi
           # NB-IoT only builds for Thingy:91
           - thingy91.low-power.memfault.nbiot
           - thingy91.debug.nbiot
           - thingy91.low-power.memfault.nbiot.legacy_pco
           - thingy91.debug.nbiot.legacy_pco
+          - thingy91x.wifi
+          - thingy91x.low-power.wifi
 
     steps:
       - uses: actions/checkout@v3
@@ -99,8 +102,15 @@ jobs:
           west update -o=--depth=1 -n
 
       - name: Build for Thingy:91
-        if: contains(matrix.configuration, 'thingy91')
+        if: contains(matrix.configuration, 'thingy91') && !contains(matrix.configuration, 'thingy91x')
         run: echo 'board=thingy91_nrf9160_ns' >> $GITHUB_ENV
+
+      - name: Build for Thingy:91 X
+        working-directory: firmware
+        if: contains(matrix.configuration, 'thingy91x')
+        run: |
+          echo 'board=thingy91x_nrf9151_ns' >> $GITHUB_ENV
+          echo "CONFIG_MQTT_HELPER_SEC_TAG=43" >> firmware.conf
 
       - name: Build for 9160DK
         if: contains(matrix.configuration, 'nrf9160dk')
@@ -131,6 +141,7 @@ jobs:
           echo "CONFIG_MEMFAULT_NCS_FW_VERSION=\"${{ env.APP_VERSION }}\"" >> firmware.conf
           echo "CONFIG_MEMFAULT_NCS_FW_TYPE=\"thingy_world\"" >> firmware.conf
           echo "CONFIG_MEMFAULT_NCS_PROJECT_KEY=\"${{ env.MEMFAULT_PROJECT_KEY }}\"" >> firmware.conf
+          echo "CONFIG_MEMFAULT_NCS_IMPLEMENT_METRICS_COLLECTION=n" >> firmware.conf
           echo MEMFAULT_OVERLAY=overlay-memfault.conf >> $GITHUB_ENV
 
       - name: Build for NB-IoT only
@@ -165,9 +176,9 @@ jobs:
           echo EXTRA_ARGS="-DDTC_OVERLAY_FILE=\"boards/${{ env.board }}.overlay;solar_shield.overlay\"" >> $GITHUB_ENV
 
       - name: enable WiFi shield support
-        if: contains(matrix.configuration, 'wifi')
+        if: contains(matrix.configuration, 'wifi') && !contains(matrix.configuration, 'thingy91x')
         run: |
-          echo EXTRA_ARGS="-DSHIELD=nrf7002ek -DEXTRA_DTC_OVERLAY_FILE=nrf91xxdk_with_nrf7002ek.overlay -DEXTRA_CONF_FILE=overlay-nrf7002ek-wifi-scan-only.conf" >> $GITHUB_ENV
+          echo EXTRA_ARGS="-DSHIELD=nrf7002ek -DEXTRA_CONF_FILE=overlay-nrf7002ek-wifi-scan-only.conf" >> $GITHUB_ENV
 
       # WiFi cannot be combined with P-GPS support
       - name: enable P-GPS
@@ -175,7 +186,7 @@ jobs:
         run: echo PGPS_OVERLAY=overlay-pgps.conf >> $GITHUB_ENV
 
       - name: enable BSEC library to support Bosch BME680 Environmental sensor
-        if: contains(matrix.configuration, 'thingy91')
+        if: contains(matrix.configuration, 'thingy91') || contains(matrix.configuration, 'thingy91x')
         working-directory: firmware
         run: |
           echo BSEC_OVERLAY=overlay-bsec.conf >> $GITHUB_ENV
