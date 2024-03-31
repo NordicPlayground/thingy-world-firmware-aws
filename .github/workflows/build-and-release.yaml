@@ -38,7 +38,7 @@ jobs:
       nextRelease: ${{ steps.version.outputs.nextRelease }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Determine next release version
         uses: nordicsemiconductor/cloud-get-next-version-action@saga
@@ -84,7 +84,7 @@ jobs:
           - thingy91x.low-power.wifi
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: firmware
           submodules: recursive
@@ -242,7 +242,7 @@ jobs:
           cp firmware/build/zephyr/zephyr.elf ./
           cp firmware/build/zephyr/.config ./
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name:
@@ -270,11 +270,11 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: actions/download-artifact@v3
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: "20.x"
           cache: "npm"
