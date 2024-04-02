@@ -49,7 +49,7 @@ jobs:
 
       - run: echo ${{ steps.version.outputs.nextRelease }}
 
-  build-asset_tracker_v2:
+  build:
     runs-on: ubuntu-22.04
     container: ghcr.io/zephyrproject-rtos/ci:v0.26.2
     env:
@@ -264,7 +264,7 @@ jobs:
       github.event_name == 'workflow_dispatch' || github.event_name ==
       'repository_dispatch')
 
-    needs: [build-asset_tracker_v2]
+    needs: [build]
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
