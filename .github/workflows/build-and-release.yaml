@@ -70,16 +70,12 @@ jobs:
           # Thingy:91 with solar shield using AWS backend
           - thingy91.low-power.solar.memfault
           - thingy91.debug.solar
-          # When enabling WiFi, Memfault does not fit flash
-          # There is no WiFi shield for the Thingy:91
-          - nrf9160dk.low-power.wifi
-          # Not enough RAM for debug and wifi, building wifi without debug
-          # - nrf9160dk.debug.wifi
           # NB-IoT only builds for Thingy:91
           - thingy91.low-power.memfault.nbiot
           - thingy91.debug.nbiot
           - thingy91.low-power.memfault.nbiot.legacy_pco
           - thingy91.debug.nbiot.legacy_pco
+          # Thingy:91 X
           - thingy91x.wifi
           - thingy91x.low-power.wifi
 

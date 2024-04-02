@@ -250,26 +250,6 @@
               "label": "Symbol file for nRF9160 DK firmware (low power)"
             },
             {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.low-power.wifi-*/merged.hex",
-              "name": "thingy_world-nRF9160DK-low-power.wifi-${nextRelease.gitTag}.hex",
-              "label": "Pre-build HEX file for nRF9160 DK with WiFi Shield (low power)"
-            },
-            {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.low-power.wifi-*/app_signed.hex",
-              "name": "thingy_world-nRF9160DK-low-power.wifi-${nextRelease.gitTag}-signed.hex",
-              "label": "Pre-build HEX file for nRF9160 DK with WiFi Shield (low power, signed)"
-            },
-            {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.low-power.wifi-*/app_update.bin",
-              "name": "thingy_world-nRF9160DK-low-power.wifi-${nextRelease.gitTag}-app_update.bin",
-              "label": "App upgrade file for nRF9160 DK with WiFi Shield (low power)"
-            },
-            {
-              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.low-power.wifi-*/zephyr.elf",
-              "name": "thingy_world-nRF9160DK-low-power.wifi-${nextRelease.gitTag}.elf",
-              "label": "Symbol file for nRF9160 DK with WiFi Shield firmware (low power)"
-            },
-            {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91x.low-power.wifi-*/merged.hex",
               "name": "thingy_world-Thingy91X-low-power.wifi-${nextRelease.gitTag}.hex",
               "label": "Pre-build HEX file for Thingy:91 X with Wi-Fi (low power)"
