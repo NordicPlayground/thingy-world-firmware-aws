@@ -61,7 +61,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug-*/app_update.bin",
-              "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91-debug-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 (debug)"
             },
             {
@@ -81,7 +81,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot-*/app_update.bin",
-              "name": "thingy_world-Thingy91-debug-nbiot-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91-debug-nbiot-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 (debug, NB-IoT only)"
             },
             {
@@ -101,7 +101,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.nbiot.legacy_pco-*/app_update.bin",
-              "name": "thingy_world-Thingy91-debug-nbiot-legacy-pco${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91-debug-nbiot-legacy-pco${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 (debug, NB-IoT only, legacy PCO)"
             },
             {
@@ -126,7 +126,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault-*/app_update.bin",
-              "name": "thingy_world-Thingy91-low-power-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91-low-power-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 (low power)"
             },
             {
@@ -146,7 +146,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.nbiot-*/app_update.bin",
-              "name": "thingy_world-Thingy91-low-power-nbiot-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91-low-power-nbiot-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 (low power, NB-IoT only)"
             },
             {
@@ -166,7 +166,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.nbiot.legacy_pco-*/app_update.bin",
-              "name": "thingy_world-Thingy91-low-power-nbiot-legacy-pco-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91-low-power-nbiot-legacy-pco-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 (low power, NB-IoT only, legacy PCO)"
             },
             {
@@ -181,7 +181,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.debug-*/app_update.bin",
-              "name": "thingy_world-nRF9160DK-debug-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-nRF9160DK-debug-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for nRF9160 DK (debug)"
             },
             {
@@ -201,7 +201,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.solar.memfault-*/app_update.bin",
-              "name": "thingy_world-Thingy91-low-power.solar-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91-low-power.solar-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 with Solar Shield (low power)"
             },
             {
@@ -221,7 +221,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.debug.solar-*/app_update.bin",
-              "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91-debug.solar-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 with Solar Shield (debug)"
             },
             {
@@ -241,7 +241,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.low-power.memfault-*/app_update.bin",
-              "name": "thingy_world-nRF9160DK-low-power-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-nRF9160DK-low-power-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for nRF9160 DK (low power)"
             },
             {
@@ -261,7 +261,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9160dk.low-power.wifi-*/app_update.bin",
-              "name": "thingy_world-nRF9160DK-low-power.wifi-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-nRF9160DK-low-power.wifi-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for nRF9160 DK with WiFi Shield (low power)"
             },
             {
@@ -281,7 +281,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91x.low-power.wifi-*/app_update.bin",
-              "name": "thingy_world-Thingy91X-low-power.wifi-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91X-low-power.wifi-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 X with Wi-Fi (low power)"
             },
             {
@@ -301,7 +301,7 @@
             },
             {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91x.wifi-*/app_update.bin",
-              "name": "thingy_world-Thingy91X-low-power.wifi-${nextRelease.gitTag}-app_upgrade.bin",
+              "name": "thingy_world-Thingy91X-low-power.wifi-${nextRelease.gitTag}-app_update.bin",
               "label": "App upgrade file for Thingy:91 X with Wi-Fi"
             },
             {
