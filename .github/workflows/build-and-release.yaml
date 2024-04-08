@@ -64,6 +64,7 @@ jobs:
           # Double-tap to crash (dt2c) sends Button ID 42 and crashes on double tap of button
           # to demonstrate the Memfault crash reporting feature.
           - thingy91.low-power.memfault.dt2c
+          - thingy91.memfault.dt2c
           - nrf9160dk.low-power.memfault
           # Not enough flash for Memfault AND debug on Thingy:91,
           # and it's not that useful anyway because debug builds
