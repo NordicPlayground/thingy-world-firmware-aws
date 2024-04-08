@@ -135,6 +135,26 @@
               "label": "App Symbols ELF file for Thingy:91 firmware (low power)"
             },
             {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.dt2c-*/merged.hex",
+              "name": "thingy_world-Thingy91-low-power-dt2c-${nextRelease.gitTag}.hex",
+              "label": "App with Bootloader HEX file for Thingy:91 (with double-tap-to-crash) (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.dt2c-*/app_signed.hex",
+              "name": "thingy_world-Thingy91-low-power-dt2c-${nextRelease.gitTag}-signed.hex",
+              "label": "Firmware Update Image HEX file for Thingy:91 (with double-tap-to-crash) (low power, signed)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.dt2c-*/app_update.bin",
+              "name": "thingy_world-Thingy91-low-power-dt2c-${nextRelease.gitTag}-app_upgrade.bin",
+              "label": "Firmware Update Image BIN file for Thingy:91 (with double-tap-to-crash) (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.dt2c-*/zephyr.elf",
+              "name": "thingy_world-Thingy91-low-power-dt2c-${nextRelease.gitTag}.elf",
+              "label": "App Symbols ELF file for Thingy:91 (with double-tap-to-crash) firmware (low power)"
+            },
+            {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91.low-power.memfault.nbiot-*/merged.hex",
               "name": "thingy_world-${nextRelease.gitTag}-Thingy91-low-power-nbiot.hex",
               "label": "App with Bootloader HEX file for Thingy:91 (low power, NB-IoT only)"

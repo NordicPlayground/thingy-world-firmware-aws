@@ -61,6 +61,9 @@ jobs:
       matrix:
         configuration:
           - thingy91.low-power.memfault
+          # Double-tap to crash (dt2c) sends Button ID 42 and crashes on double tap of button
+          # to demonstrate the Memfault crash reporting feature.
+          - thingy91.low-power.memfault.dt2c
           - nrf9160dk.low-power.memfault
           # Not enough flash for Memfault AND debug on Thingy:91,
           # and it's not that useful anyway because debug builds
@@ -141,6 +144,11 @@ jobs:
           echo "CONFIG_MEMFAULT_NCS_PROJECT_KEY=\"${{ env.MEMFAULT_PROJECT_KEY }}\"" >> firmware.conf
           echo "CONFIG_MEMFAULT_NCS_IMPLEMENT_METRICS_COLLECTION=n" >> firmware.conf
           echo MEMFAULT_OVERLAY=overlay-memfault.conf >> $GITHUB_ENV
+
+      - name: Configure double-tap-to-crash
+        if: contains(matrix.configuration, 'dt2c')
+        working-directory: firmware
+        run: echo "CONFIG_UI_DOUBLE_TAP_TO_CRASH=y" >> firmware.conf
 
       - name: Configure for NB-IoT only
         working-directory: firmware
