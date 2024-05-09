@@ -328,6 +328,26 @@
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91x.wifi-*/zephyr.elf",
               "name": "thingy_world-${nextRelease.gitTag}-Thingy91X-wifi.elf",
               "label": "App Symbols ELF file for Thingy:91 X firmware"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91x.debug-*/merged.hex",
+              "name": "thingy_world-${nextRelease.gitTag}-Thingy91X-debug.hex",
+              "label": "App with Bootloader HEX file for Thingy:91 X (debug)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91x.debug-*/app_signed.hex",
+              "name": "thingy_world-${nextRelease.gitTag}-Thingy91X-debug-signed.hex",
+              "label": "Firmware Update Image HEX file for Thingy:91 X (debug)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91x.debug-*/app_update.bin",
+              "name": "thingy_world-${nextRelease.gitTag}-Thingy91X-debug-app_update.bin",
+              "label": "Firmware Update Image BIN file for Thingy:91 X (debug)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91x.debug-*/zephyr.elf",
+              "name": "thingy_world-${nextRelease.gitTag}-Thingy91X-debug.elf",
+              "label": "App Symbols ELF file for Thingy:91 X firmware (debug)"
             }
           ]
         }

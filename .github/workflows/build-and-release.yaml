@@ -82,6 +82,7 @@ jobs:
           # Thingy:91 X
           - thingy91x.wifi
           - thingy91x.low-power.wifi
+          - thingy91x.debug
 
     steps:
       - uses: actions/checkout@v4
