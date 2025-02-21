@@ -189,11 +189,15 @@ jobs:
           echo EXTRA_ARGS="-DDTC_OVERLAY_FILE=\"boards/${{ env.board }}.overlay;solar_shield.overlay\"" >> $GITHUB_ENV
 
       - name: enable WiFi shield support
+        working-directory: firmware
         if:
           contains(matrix.configuration, 'wifi') &&
           !contains(matrix.configuration, 'thingy91x')
         run: |
           echo EXTRA_ARGS="-DSHIELD=nrf7002ek -DEXTRA_CONF_FILE=overlay-nrf7002ek-wifi-scan-only.conf" >> $GITHUB_ENV
+          echo "CONFIG_HEAP_MEM_POOL_SIZE=54000" >> firmware.conf
+          echo "CONFIG_NRF_WIFI_SCAN_MAX_BSS_CNT=10" >> firmware.conf
+          echo "CONFIG_LOCATION_METHOD_WIFI_SCANNING_RESULTS_MAX_CNT=10" >> firmware.conf
 
       # WiFi cannot be combined with P-GPS support
       - name: enable P-GPS
