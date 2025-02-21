@@ -290,6 +290,26 @@
               "label": "App Symbols ELF file for nRF9160 DK firmware (low power)"
             },
             {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9151dk.wifi-*/merged.hex",
+              "name": "thingy_world-${nextRelease.gitTag}-nRF9151-DK-WiFi.hex",
+              "label": "App with Bootloader HEX file for nRF9151 DK + nRF7002 EK (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9151dk.wifi-*/app_signed.hex",
+              "name": "thingy_world-${nextRelease.gitTag}-nRF9151-DK-WiFi-signed.hex",
+              "label": "Firmware Update Image HEX file for nRF9151 DK + nRF7002 EK (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9151dk.wifi-*/app_update.bin",
+              "name": "thingy_world-${nextRelease.gitTag}-nRF9151-DK-WiFi-app_update.bin",
+              "label": "Firmware Update Image BIN file for nRF9151 DK + nRF7002 EK (low power)"
+            },
+            {
+              "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/nrf9151dk.wifi-*/zephyr.elf",
+              "name": "thingy_world-${nextRelease.gitTag}-nRF9151-DK-WiFi.elf",
+              "label": "App Symbols ELF file for nRF9151 DK + nRF7002 EK firmware (low power)"
+            },
+            {
               "path": "/home/runner/work/thingy-world-firmware-aws/thingy-world-firmware-aws/thingy91x.low-power.wifi-*/merged.hex",
               "name": "thingy_world-${nextRelease.gitTag}-Thingy91X-low-power.wifi.hex",
               "label": "App with Bootloader HEX file for Thingy:91 X (low power)"
